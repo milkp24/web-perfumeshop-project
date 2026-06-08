@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dolly Perfume | Stock Management</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:'Prompt',sans-serif;
+    background:#f9e7e4;
+    color:#111;
+}
+
+/* ================= HEADER ================= */
+header{
+    padding:25px 100px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.logo img{height:60px;}
+nav a{
+    margin-left:45px;
+    text-decoration:none;
+    color:#111;
+    letter-spacing:2px;
+    font-size:14px;
+    transition: 0.3s;
+}
+nav a:hover {
+    opacity: 0.6;
+    border-bottom: 1px solid #111;
+}
+
+/* ================= STOCK SECTION ================= */
+.stock-section{
+    padding:60px 100px 120px;
+    background:#fff;
+}
+.stock-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+.stock-title h2{
+    font-size:42px;
+    font-weight:300;
+    letter-spacing:6px;
+    margin: 0;
+}
+table{
+    width:100%;
+    max-width:1000px;
+    margin:auto;
+    border-collapse:collapse;
+}
+th,td{
+    padding:18px 20px;
+    border-bottom:1px solid #ddd;
+}
+th{
+    background:#f3d6db;
+    letter-spacing:2px;
+    font-weight:400;
+    text-align: left;
+}
+th:nth-child(1), td:nth-child(1) { text-align: center; }
+th:nth-child(3), td:nth-child(3) { text-align: right; }
+th:nth-child(4), td:nth-child(4) { text-align: right; }
+th:nth-child(5), td:nth-child(5) { text-align: center; }
+
+td:nth-child(1){color:#999;}
+.stock{font-weight:600}
+.add-btn{
+    padding:8px 25px;
+    border:1px solid #111;
+    background:transparent;
+    cursor:pointer;
+    letter-spacing:2px;
+    font-family:'Prompt',sans-serif;
+    transition: 0.3s;
+}
+.add-btn:hover{
+    background:#111;
+    color:#fff;
+}
+
+/* ================= ORDER SUMMARY ================= */
+.cart-summary{
+    max-width:1000px;
+    margin:60px auto 0;
+    padding:40px;
+    background:#f3d6db;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+.cart-summary h3{
+    margin-top: 0;
+    margin-bottom:30px;
+    letter-spacing:3px;
+    font-weight:400;
+}
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:12px;
+}
+.grand-total{
+    margin-top:20px;
+    padding-top: 20px;
+    border-top: 1px solid #e1b1b9;
+    font-size:22px;
+    font-weight:600;
+}
+.checkout-btn{
+    width:100%;
+    margin-top:30px;
+    padding:15px;
+    border:none;
+    background:#111;
+    color:#fff;
+    font-size:18px;
+    letter-spacing:3px;
+    cursor:pointer;
+    font-family:'Prompt',sans-serif;
+    transition: 0.3s;
+}
+.checkout-btn:hover {
+    opacity: 0.8;
+}
+
+/* ================= FOOTER ================= */
+footer{
+    background:#111;
+    color:#fff;
+    padding:40px 120px;
+    text-align: center;
+}
+footer p { margin: 0; font-size: 14px; color: #ccc; }
+
+@media (max-width: 900px) {
+    header, .stock-section, footer { padding: 20px; }
+    header { flex-direction: column; gap: 20px; }
+    nav a { margin: 0 15px; }
+    table { font-size: 14px; }
+    th, td { padding: 10px 5px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <img src="pic/logo-removebg-preview.png" alt="Dolly Perfume">
+    </div>
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="regist1.html">REGISTER</a>
+    </nav>
+</header>
+
+<section class="stock-section">
+    <div class="stock-title">
+        <h2>PERFUME STOCK</h2>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Product</th>
+                <th>Price ($)</th>
+                <th>Stock</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="stock-list">
+            </tbody>
+    </table>
+
+    <div class="cart-summary">
+        <h3>ORDER SUMMARY</h3>
+
+        <div class="summary-row">
+            <span>Total Items</span>
+            <span id="sum-items">0</span>
+        </div>
+
+        <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="sum-subtotal">$0.00</span>
+        </div>
+
+        <div class="summary-row" id="discount-row" style="display:none;">
+            <span>Discount 10% (ซื้อมากกว่า 5 ชิ้น)</span>
+            <span id="sum-discount">-$0.00</span>
+        </div>
+
+        <div class="summary-row">
+            <span>VAT 7%</span>
+            <span id="sum-vat">$0.00</span>
+        </div>
+
+        <div class="summary-row grand-total">
+            <span>Total</span>
+            <span id="sum-total">$0.00</span>
+        </div>
+
+        <button class="checkout-btn" onclick="checkout()">CHECKOUT</button>
+    </div>
+</section>
+
+<footer>
+    <p>DOLLY PERFUME — Luxury fragrance crafted for timeless elegance.</p>
+</footer>
+
+<script>
+// ===== PRODUCTS =====
+const products = [
+["SKIN PERFECTING PROTECTIVE BASE PREP",79,"p1.png"],
+["WHOLE PLANT EFFECT ESSENTIAL CREAM",77,"p2.png"],
+["CALMING & COMFORTING AMPOULE",50,"p3.png"],
+["HYDRATING & SOOTHING CREAM",49,"p4.png"],
+["WHOLE PLANT EFFECT CONCENTRATE",88,"p5.png"],
+["WHOLE PLANT ESSENTIAL CREAM",99,"p6.png"],
+["HYDRATING & SOOTHING MIST",32,"p7.png"],
+["CALMING & SOOTHING CREAM",36,"p8.png"],
+["HYDRATING & SOOTHING TONER",34,"p9.png"],
+["RADIANCE GLOW SERUM",65,"p10.png"],
+["PREMIUM NIGHT REPAIR SERUM",120,"p3.png"],
+["ULTRA MOISTURE DAY CREAM",95,"p4.png"]
+];
+
+// ===== CREATE STOCK TABLE =====
+const stockList = document.getElementById("stock-list");
+const DEFAULT_STOCK = 10;
+
+products.forEach((p, i) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+        <td>${i + 1}</td>
+        <td>${p[0]}</td>
+        <td>${formatMoney(p[1])}</td>
+        <td class="stock">${DEFAULT_STOCK}</td>
+        <td><button class="add-btn" onclick="buyItem(this)">ADD</button></td>
+    `;
+    stockList.appendChild(tr);
+});
+
+// ===== CART LOGIC =====
+let totalItems = 0;
+let subtotal = 0;
+let currentGrandTotal = 0; // เก็บยอดรวมสุทธิไว้ส่งไปหน้า checkout
+
+function formatMoney(n){
+    return n.toLocaleString('en-US',{minimumFractionDigits:2});
+}
+
+function buyItem(btn){
+    const row = btn.closest('tr');
+    const stockCell = row.querySelector('.stock');
+    const price = parseFloat(row.cells[2].innerText.replace(/,/g, ''));
+    let stock = parseInt(stockCell.innerText);
+
+    if(stock > 0){
+        stockCell.innerText = stock - 1;
+        totalItems++;
+        subtotal += price;
+        calculate();
+    }else{
+        alert("Out of stock ❌");
+    }
+}
+
+function calculate(){
+    let discount = 0;
+    if(totalItems > 5){
+        discount = subtotal * 0.1;
+        document.getElementById('discount-row').style.display = 'flex';
+    }else{
+        document.getElementById('discount-row').style.display = 'none';
+    }
+
+    const vat = (subtotal - discount) * 0.07;
+    currentGrandTotal = subtotal - discount + vat;
+
+    document.getElementById('sum-items').innerText = totalItems;
+    document.getElementById('sum-subtotal').innerText = "$" + formatMoney(subtotal);
+    document.getElementById('sum-discount').innerText = "-$" + formatMoney(discount);
+    document.getElementById('sum-vat').innerText = "$" + formatMoney(vat);
+    document.getElementById('sum-total').innerText = "$" + formatMoney(currentGrandTotal);
+}
+
+// ===== อัปเกรดระบบ CHECKOUT ให้ส่งข้อมูลจำลองไปหน้าคิดเงินจริง =====
+function checkout(){
+    if(totalItems === 0){
+        alert("🛒 ตะกร้าสินค้ายังว่างอยู่ค่ะ กรุณากดปุ่ม ADD เพื่อเลือกสินค้าก่อนนะคะ");
+        return;
+    }
+    
+    // บันทึกยอดรวมที่คำนวณได้จริงและชื่อกลุ่มสินค้าจำลองลง localStorage
+    localStorage.setItem("productName", "น้ำหอมและครีมบำรุงเซกชัน Stock (รวมจำนวน " + totalItems + " ชิ้น)");
+    localStorage.setItem("productPrice", currentGrandTotal.toFixed(2));
+    
+    // แจ้งเตือนและส่งต่อไปยังหน้าชำระเงินหลักของระบบ
+    alert("💖 ระบบบันทึกยอดคำนวณเรียบร้อยแล้ว ยอดสุทธิคือ $" + formatMoney(currentGrandTotal) + "\nกำลังพาท่านไปยังหน้ากรอกที่อยู่จัดส่งสินค้าค่ะ");
+    window.location.href = "checkout.html";
+}
+</script>
+
+</body>
+</html>

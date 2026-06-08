@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Canvas Example</title>
+</head>
+<body>
+
+<!-- ====== Section 1 : Draw Line ====== -->
+<section>
+<canvas id="Canvas1" width="400" height="200"
+style="border:1px solid #37e075;"></canvas>
+</section>
+
+<!-- ====== Section 2 : Draw Text ====== -->
+<section>
+<canvas id="Canvas2" width="400" height="200"
+style="border:1px solid #37e075;"></canvas>
+</section>
+
+<script>
+/* ===============================
+Part 1 : Draw Line
+=============================== */
+var c1 = document.getElementById("Canvas1");
+var ctx1 = c1.getContext("2d");
+
+ctx1.moveTo(0, 0);
+ctx1.lineTo(400, 200);
+ctx1.stroke();
+
+
+/* ===============================
+Part 2 : Draw Text
+=============================== */
+var c2 = document.getElementById("Canvas2");
+var ctx2 = c2.getContext("2d");
+
+// Draw filled text
+ctx2.font = "30px Arial";
+ctx2.fillStyle = "red";
+ctx2.fillText("Canvas Text Example", 10, 50);
+
+// Draw outlined text
+ctx2.font = "40px Georgia";
+ctx2.strokeStyle = "green";
+ctx2.strokeText("Outline", 10, 120);
+
+</script>
+<section>
+  <canvas id="Canvas3" width="200" height="200" style="border: 1px
+          solid #37e075;"></canvas>
+  <script>
+    //.....การแรเงาสี..............
+    var c = document.getElementById('Canvas3');
+    var ctx = c.getContext('2d');
+    // Horizontal gradient from (0,0) to (200,0)
+    var linearGradient = ctx.createLinearGradient(0, 0, 200, 0);
+
+    linearGradient.addColorStop(0, 'red'); // Color at the start of the gradient
+    linearGradient.addColorStop(1, 'blue'); // Color at the end of the gradient
+
+    // Gradient from center outwardsvar
+    radialGradient = ctx.createRadialGradient(100, 100, 0, 100, 100, 75);
+    radialGradient.addColorStop(0, 'white');
+    radialGradient.addColorStop(1, 'black');
+   
+    // Gradient around (150,150) starting at 0 radians
+    var conicGradient = ctx.createConicGradient(0, 150, 150);
+    conicGradient.addColorStop(0, 'green');
+    conicGradient.addColorStop(0.5, 'yellow');
+    conicGradient.addColorStop(1, 'red');
+   
+    // Example using linear gradient
+    ctx.fillStyle = linearGradient;
+    ctx.fillRect(0, 0, 200, 100);
+
+    // Example using radial gradient
+    ctx.fillStyle = radialGradient;
+    ctx.beginPath();
+    ctx.arc(100, 100, 75, 0, 2 * Math.PI);
+    ctx.fill();
+
+    // Example using conic gradient
+    ctx.fillStyle = conicGradient;
+    ctx.fillRect(100, 100, 100, 100); // Fills a rectangle with the conic gradient
+  </script>
+  </section>
+</body>
+</html>

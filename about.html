@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us - Dolly Perfume</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Prompt', sans-serif;
+    background-color: #f9e7e4;
+    color: #111;
+    line-height: 1.8;
+}
+
+/* ================= HEADER & NAV ================= */
+header {
+    padding: 25px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 60px;
+}
+
+nav a {
+    margin-left: 45px;
+    text-decoration: none;
+    color: #111;
+    font-weight: 400;
+    letter-spacing: 2px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    opacity: 0.6;
+    border-bottom: 1px solid #111;
+}
+
+/* ================= ABOUT HERO ================= */
+.about-hero {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.about-hero h1 {
+    font-size: 40px;
+    font-weight: 300;
+    letter-spacing: 6px;
+    margin-bottom: 10px;
+}
+
+.about-hero p {
+    font-size: 16px;
+    color: #666;
+    letter-spacing: 2px;
+}
+
+/* ================= CONTENT SECTION ================= */
+.about-section {
+    background: white;
+    padding: 100px 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px;
+}
+
+.about-section.reverse {
+    flex-direction: row-reverse;
+    background-color: #fdf6f5;
+}
+
+.about-text {
+    flex: 1;
+    max-width: 550px;
+}
+
+.about-text h2 {
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+    color: #111;
+}
+
+.about-text p {
+    color: #555;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.about-img {
+    flex: 1;
+    text-align: center;
+}
+
+.about-img img {
+    width: 100%;
+    max-width: 45px0px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+}
+
+/* ================= CORE VALUES ================= */
+.values-section {
+    padding: 100px 120px;
+    text-align: center;
+}
+
+.values-section h2 {
+    letter-spacing: 4px;
+    font-weight: 300;
+    margin-bottom: 60px;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.value-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+}
+
+.value-card h3 {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.value-card p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* ================= FOOTER ================= */
+footer {
+    background: #111;
+    color: white;
+    padding: 90px 120px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+footer h4 {
+    margin-bottom: 25px;
+    letter-spacing: 3px;
+    font-weight: 300;
+}
+
+footer p, footer a {
+    font-size: 14px;
+    color: #ccc;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: white;
+}
+
+/* ================= FADE IN ANIMATION ================= */
+.fade-in {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 1.2s ease;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+    .about-section, .about-section.reverse {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 40px;
+        gap: 40px;
+    }
+    
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    header {
+        padding: 20px 40px;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    nav a {
+        margin: 0 15px;
+    }
+    
+    .values-section {
+        padding: 60px 40px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="fade-in">
+    <div class="logo">
+        <img src="pic/logo-removebg-preview.png" alt="Dolly Perfume">
+    </div>
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="regist1.html">REGISTER</a>
+    </nav>
+</header>
+
+<div class="about-hero fade-in">
+    <h1>ABOUT US</h1>
+    <p>The Art of Luxury Fragrance</p>
+</div>
+
+<section class="about-section fade-in">
+    <div class="about-text">
+        <h2>OUR STORY</h2>
+        <p><strong>Dolly Perfume</strong> เริ่มต้นจากความหลงใหลในศาสตร์แห่งกลิ่นหอมและการปรุงน้ำหอมชั้นสูง เราเชื่อว่าน้ำหอมไม่ใช่แค่กลิ่นที่ฉีดพรมบนร่างกาย แต่คือสิ่งสะท้อนตัวตน เสน่ห์ และความมั่นใจอันไร้กาลเวลาของผู้สวมใส่</p>
+        <p>เราทุ่มเทเวลาในการคิดค้นและพัฒนาร่วมกับผู้เชี่ยวชาญด้านน้ำหอม เพื่อสร้างสรรค์กลิ่นที่โดดเด่น มีมิติ และมอบประสบการณ์ความหรูหราที่แตกต่างในทุก ๆ วัน</p>
+    </div>
+    <div class="about-img">
+        <img src="pic/p1.png" alt="Our Story">
+    </div>
+</section>
+
+<section class="about-section reverse fade-in">
+    <div class="about-text">
+        <h2>OUR CRAFT</h2>
+        <p>น้ำหอมทุกขวดของ Dolly Perfume ผ่านกรรมวิธีการบ่มและสกัดอย่างพิถีพิถัน วัตถุดิบหลักของเรานำเข้าจากแหล่งปลูกที่ดีที่สุดทั่วโลก ไม่ว่าจะเป็นสารสกัดจากดอกกุหลาบสายพันธุ์พิเศษ หรือพรรณไม้อันล้ำค่า</p>
+        <p>เพื่อให้มั่นใจว่า น้ำหอมที่คุณฉีดจะให้กลิ่นที่นุ่มนวล ละมุนผิว และมีความติดทนนานยาวนานตลอดวัน (Long-lasting Fragrance)</p>
+    </div>
+    <div class="about-img">
+        <img src="pic/p2.png" alt="Our Craft">
+    </div>
+</section>
+
+<section class="values-section fade-in">
+    <h2>OUR CORE VALUES</h2>
+    <div class="values-grid">
+        <div class="value-card">
+            <h3>Premium Ingredients</h3>
+            <p>เลือกสรรเฉพาะวัตถุดิบเกรดพรีเมียม เพื่อความหอมที่บริสุทธิ์และปลอดภัยต่อผิวพรรณ</p>
+        </div>
+        <div class="value-card">
+            <h3>Cruelty-Free</h3>
+            <p>ผลิตภัณฑ์ทุกชิ้นและกระบวนการผลิตของเรา ไม่มีการทดลองหรือทำร้ายสัตว์ใด ๆ ทั้งสิ้น</p>
+        </div>
+        <div class="value-card">
+            <h3>Timeless Elegance</h3>
+            <p>ดีไซน์และแนวคิดกลิ่นที่มุ่งเน้นความเรียบหรู คลาสสิก ใช้ได้ทุกยุคทุกสมัยไม่มีตกเทรนด์</p>
+        </div>
+    </div>
+</section>
+
+<footer class="fade-in">
+    <div>
+        <h4>DOLLY PERFUME</h4>
+        <p>Luxury fragrance crafted for timeless elegance.</p>
+    </div>
+    <div>
+        <h4>Quick Links</h4>
+        <p><a href="index.html">Home</a></p>
+        <p><a href="about.html">About</a></p>
+        <p><a href="regist1.html">Register</a></p>
+    </div>
+    <div>
+        <h4>Contact</h4>
+        <p>Email: dolly@email.com</p>
+        <p>Tel: 099-999-9999</p>
+    </div>
+</footer>
+
+<script>
+// ระบบแอนิเมชัน Fade-in เมื่อเลื่อนหน้าจอ
+const faders = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('show');
+        }
+    });
+}, { threshold: 0.1 });
+faders.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

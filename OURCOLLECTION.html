@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Collection - Dolly Perfume</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Prompt', sans-serif;
+    background-color: #f9e7e4; /* ปรับเป็นสีชมพูอ่อนอมครีมเข้าธีมหลัก */
+    color: #111;
+}
+
+/* ================= HEADER & NAV ================= */
+header {
+    padding: 25px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 60px;
+}
+
+nav a {
+    margin-left: 45px;
+    text-decoration: none;
+    color: #111;
+    font-weight: 400;
+    letter-spacing: 2px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    opacity: 0.6;
+    border-bottom: 1px solid #111;
+}
+
+/* หัวข้อประจำหน้า */
+.page-title {
+    text-align: center;
+    font-size: 28px;
+    letter-spacing: 6px;
+    font-weight: 300;
+    margin: 40px 0 20px;
+}
+
+/* ================= GRID CONTAINER ================= */
+.collection-container {
+    padding: 0 100px 100px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.product-card {
+    background: white; /* เปลี่ยนเป็นการ์ดสีขาวดูสะอาดและพรีเมียม */
+    border: 1px solid #eee;
+    padding: 25px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+    transition: 0.4s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* จัดระดับปุ่มด้านล่างให้เท่ากันทุกการ์ด */
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin: 10px 0;
+    min-height: 45px; /* ล็อกความสูงหัวข้อไม่ให้การ์ดเบี้ยว */
+}
+
+.price {
+    margin: 10px 0;
+    font-weight: 600;
+    color: #e65c7b; /* ไฮไลต์สีราคาสินค้าให้น่าดึงดูด */
+    font-size: 18px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 12px;
+    width: 100%;
+    border: 1px solid #111;
+    background: transparent;
+    cursor: pointer;
+    font-family: 'Prompt', sans-serif;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    border-radius: 4px;
+}
+
+button:hover {
+    background: #111;
+    color: white;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+    .collection-container {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 40px 60px;
+    }
+    header {
+        padding: 20px 40px;
+        flex-direction: column;
+        gap: 20px;
+    }
+    nav a {
+        margin: 0 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .collection-container {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <img src="pic/logo-removebg-preview.png" alt="Dolly Perfume">
+    </div>
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="regist1.html">REGISTER</a>
+    </nav>
+</header>
+
+<div class="page-title">OUR COLLECTION</div>
+
+<section class="collection-container">
+
+<script>
+// รายการสินค้าทั้ง 12 ชิ้นของคุณ
+const products = [
+    ["SKIN PERFECTING PROTECTIVE BASE PREP", 79, "p1.png"],
+    ["WHOLE PLANT EFFECT ESSENTIAL CREAM", 77, "p2.png"],
+    ["CALMING & COMFORTING AMPOULE", 50, "p3.png"],
+    ["HYDRATING & SOOTHING CREAM", 49, "p4.png"],
+    ["WHOLE PLANT EFFECT CONCENTRATE", 88, "p5.png"],
+    ["WHOLE PLANT ESSENTIAL CREAM", 99, "p6.png"],
+    ["HYDRATING & SOOTHING MIST", 32, "p7.png"],
+    ["CALMING & SOOTHING CREAM", 36, "p8.png"],
+    ["HYDRATING & SOOTHING TONER", 34, "p9.png"],
+    ["RADIANCE GLOW SERUM", 65, "p10.png"],
+    ["PREMIUM NIGHT REPAIR SERUM", 120, "p3.png"],
+    ["ULTRA MOISTURE DAY CREAM", 95, "p4.png"]
+];
+
+// วนลูปสร้างการ์ดสินค้า
+products.forEach(product => {
+    document.write(`
+    <div class="product-card">
+        <div>
+            <img src="pic/${product[2]}" alt="${product[0]}">
+            <h3>${product[0]}</h3>
+        </div>
+        <div>
+            <div class="price">$${product[1]}</div>
+            <button onclick="buyProduct('${product[0]}', ${product[1]})">
+                Add To Cart
+            </button>
+        </div>
+    </div>
+    `);
+});
+
+// ฟังก์ชันบันทึกค่าลงตะกร้าสินค้าจำลอง และพาไปหน้า Checkout
+function buyProduct(name, price){
+    localStorage.setItem("productName", name);
+    localStorage.setItem("productPrice", price);
+    
+    // แสดงป๊อปอัปถามความสมัครใจในการจ่ายเงิน
+    if (confirm('🛒 เพิ่มสินค้า "' + name + '" ลงในตะกร้าเรียบร้อยแล้ว!\nคุณต้องการไปยังหน้าชำระเงิน (Checkout) ทันทีเลยหรือไม่?')) {
+        window.location.href = "checkout.html";
+    }
+}
+</script>
+
+</section>
+
+</body>
+</html>

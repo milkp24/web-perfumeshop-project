@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Register - Dolly Perfume</title>
+
+    <style>
+        /* เรียกใช้ฟอนต์ Prompt จาก Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap');
+
+        body {
+            font-family: 'Prompt', sans-serif; /* ฟอนต์หลักของเว็บ */
+            margin: 0;              /* ตัดขอบรอบหน้าเว็บ */
+            height: 100vh;          /* สูงเต็มหน้าจอ */
+            box-sizing: border-box;
+
+            /* ตั้งค่าพื้นหลังเป็นรูป */
+            background-image: url("pic/Backgroundenter.png"); /* รูปพื้นหลัง */
+            background-size: cover;        /* ขยายเต็มจอ */
+            background-position: center;   /* จัดรูปให้อยู่กลาง */
+            background-repeat: no-repeat;  /* ไม่ให้รูปซ้ำ */
+        }
+
+        /* ================= HEADER & NAV ================= */
+        header {
+            padding: 25px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            box-sizing: border-box;
+        }
+
+        .logo img {
+            height: 60px;
+        }
+
+        nav a {
+            margin-left: 45px;
+            text-decoration: none;
+            color: #111;
+            font-weight: 400;
+            letter-spacing: 2px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.6;
+            border-bottom: 1px solid #111;
+        }
+
+        /* ส่วนจัดวางฟอร์มให้อยู่ฝั่งขวา */
+        .main-container {
+            height: 100%;
+            display: flex;
+            justify-content: flex-end; /* ดันฟอร์มไปด้านขวา */
+            align-items: center;    /* จัดกึ่งกลางแนวตั้ง */
+            padding-right: 120px;   /* เว้นระยะจากขอบขวา */
+            padding-top: 80px;      /* หลบแถบเมนูด้านบน */
+            box-sizing: border-box;
+        }
+
+        /* กล่องฟอร์ม */
+        form {
+            background: rgba(255,255,255,0.95); /* สีขาวโปร่งเล็กน้อย */
+            padding: 35px;        /* ระยะห่างด้านใน */
+            width: 420px;         /* ความกว้างฟอร์ม */
+            border-radius: 20px;  /* ทำมุมโค้ง */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* เงา */
+        }
+
+        form h2 {
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-align: center;
+            color: #111;
+        }
+
+        /* แต่ละแถวของฟอร์ม */
+        .row {
+            margin-bottom: 15px; /* เว้นระยะด้านล่าง */
+            display: flex;
+            align-items: center;
+        }
+
+        /* ป้ายชื่อช่อง */
+        label {
+            display: inline-block; 
+            width: 140px;          /* ความกว้าง label */
+            font-weight: 500;      /* ตัวหนานิด ๆ */
+            font-size: 14px;
+            text-align: left;
+        }
+
+        /* ช่องกรอกข้อมูล */
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"],
+        input[type="number"] {
+            width: 220px;          /* ปรับความกว้างให้สมดุล */
+            padding: 8px 12px;     /* ระยะด้านใน */
+            border-radius: 12px;   /* ทำช่องให้มน */
+            border: 1px solid #ccc;
+            outline: none;
+            font-family: 'Prompt', sans-serif;
+            font-size: 13px;
+            box-sizing: border-box;
+        }
+
+        /* ส่วนครอบคลุมวิทยุและเช็คบ็อกซ์ */
+        .gender-options {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .checkbox-row {
+            justify-content: center;
+            font-size: 14px;
+            margin: 20px 0 10px;
+        }
+
+        .checkbox-row input {
+            margin-right: 8px;
+            cursor: pointer;
+        }
+
+        /* เอฟเฟกต์เมื่อคลิกช่องกรอก */
+        input:focus {
+            border-color: #d87c9a; /* เปลี่ยนเป็นสีชมพู */
+            box-shadow: 0 0 5px rgba(216, 124, 154, 0.3);
+        }
+
+        /* ปุ่ม Submit */
+        .submit-btn {
+            width: 100%;           /* เต็มความกว้างฟอร์ม */
+            padding: 12px;
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            border: none;
+            border-radius: 25px;   /* ปุ่มมน */
+            cursor: pointer;
+            background-color: #d87c9a; /* สีชมพู */
+            color: #fff;
+            font-family: 'Prompt', sans-serif;
+            transition: 0.3s;
+        }
+
+        /* เอฟเฟกต์เมื่อชี้เมาส์ */
+        .submit-btn:hover {
+            background-color: #c56786; /* ชมพูเข้มขึ้น */
+            transform: translateY(-2px);
+        }
+
+        /* เครื่องหมาย * สีแดง */
+        .required {
+            color: red;
+            margin-left: 5px;
+        }
+
+        /* RESPONSIVE สำหรับหน้าจอมือถือ */
+        @media (max-width: 900px) {
+            header {
+                padding: 20px;
+                flex-direction: column;
+                gap: 15px;
+                background: rgba(255,255,255,0.9);
+            }
+            nav a {
+                margin: 0 15px;
+            }
+            .main-container {
+                justify-content: center;
+                padding-right: 0;
+                padding-top: 140px;
+            }
+            form {
+                width: 90%;
+                max-width: 400px;
+                padding: 25px;
+            }
+            label {
+                width: 110px;
+                font-size: 13px;
+            }
+            input[type="text"], input[type="email"], input[type="password"], input[type="date"], input[type="number"] {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <img src="pic/logo-removebg-preview.png" alt="Dolly Perfume">
+    </div>
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="regist1.html">REGISTER</a>
+    </nav>
+</header>
+
+<div class="main-container">
+    <form onsubmit="handleRegister(event)">
+        <h2>Create Account</h2>
+
+        <div class="row">
+            <label>Name :</label>
+            <input type="text" placeholder="พิมพ์ชื่อ" required>
+            <span class="required">*</span>
+        </div>
+
+        <div class="row">
+            <label>Surname :</label>
+            <input type="text" placeholder="พิมพ์นามสกุล" required>
+            <span class="required">*</span>
+        </div>
+
+        <div class="row">
+            <label>Date of birth :</label>
+            <input type="date">
+        </div>
+
+        <div class="row">
+            <label>Age :</label>
+            <input type="number" min="1" max="100">
+        </div>
+
+        <div class="row">
+            <label>Gender :</label>
+            <div class="gender-options">
+                <input type="radio" name="gender" id="male" value="Male"> <label for="male" style="width:auto; margin:0;">Male</label>
+                <input type="radio" name="gender" id="female" value="Female"> <label for="female" style="width:auto; margin:0;">Female</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <label>Email :</label>
+            <input type="email" placeholder="Enter email address" required>
+            <span class="required">*</span>
+        </div>
+
+        <div class="row">
+            <label>Password :</label>
+            <input type="password" placeholder="รหัสผ่าน" required minlength="6">
+            <span class="required">*</span>
+        </div>
+
+        <div class="row">
+            <label>Confirm Password :</label>
+            <input type="password" placeholder="ยืนยันรหัสผ่าน" required minlength="6">
+            <span class="required">*</span>
+        </div>
+
+        <div class="row checkbox-row">
+            <input type="checkbox" id="correct" required> 
+            <label for="correct" style="width:auto; margin:0; font-weight:400;">ตรวจสอบแล้วข้อมูลถูกต้อง</label>
+        </div>
+
+        <input class="submit-btn" type="submit" value="Submit">
+    </form>
+</div>
+
+<script>
+// ฟังก์ชันทำงานเมื่อผู้ใช้กด Submit สมัครสมาชิกสำเร็จ
+function handleRegister(event) {
+    event.preventDefault(); // ป้องกันหน้าเว็บรีเฟรชตัวเอง
+    
+    // ตรวจสอบเงื่อนไขรหัสผ่านตรงกันเบื้องต้น
+    const passwords = document.querySelectorAll('input[type="password"]');
+    if (passwords[0].value !== passwords[1].value) {
+        alert("❌ รหัสผ่านและยืนยันรหัสผ่านไม่ตรงกันค่ะ กรุณาตรวจสอบอีกครั้ง");
+        return;
+    }
+
+    alert("🎉 สมัครสมาชิก Dolly Perfume สำเร็จเรียบร้อยแล้วค่ะ!\nระบบจะพาท่านกลับสู่หน้าหลักเพื่อเลือกซื้อน้ำหอมต่อค่ะ");
+    
+    // ย้ายหน้ากลับไปยังหน้าหลัก index.html ตัวจริง
+    window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

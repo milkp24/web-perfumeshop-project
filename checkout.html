@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout - Dolly Perfume</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+body{
+    font-family:'Prompt', sans-serif;
+    background:#f9e7e4;
+    text-align:center;
+    padding:60px 20px;
+    margin: 0;
+}
+
+.box{
+    background:white;
+    padding:40px;
+    max-width:500px;
+    margin:auto;
+    box-shadow:0 20px 40px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    text-align: left;
+}
+
+h2 {
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+.order-detail {
+    background: #fff0f2;
+    padding: 15px 20px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    border-left: 4px solid #111;
+}
+
+.order-detail h3 {
+    margin: 0 0 5px 0;
+    font-weight: 500;
+}
+
+.order-detail p {
+    margin: 0;
+    color: #e65c7b;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+input[type="text"], textarea, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: 'Prompt', sans-serif;
+}
+
+.btn-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+button{
+    padding: 12px 40px;
+    border: 1px solid #111;
+    background: transparent;
+    cursor: pointer;
+    font-family: 'Prompt', sans-serif;
+    font-size: 16px;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    width: 100%;
+}
+
+button:hover{
+    background:#111;
+    color:white;
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+}
+.back-link:hover {
+    text-decoration: underline;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Checkout Summary</h2>
+    
+    <div class="order-detail">
+        <h3 id="productName">กำลังโหลดข้อมูลสินค้า...</h3>
+        <p id="productPrice">$0.00</p>
+    </div>
+
+    <form id="checkoutForm" onsubmit="confirmOrder(event)">
+        <div class="form-group">
+            <label for="cusName">ชื่อ-นามสกุล ผู้รับ</label>
+            <input type="text" id="cusName" required placeholder="เช่น สมชาย ใจดี">
+        </div>
+
+        <div class="form-group">
+            <label for="cusAddress">ที่อยู่จัดส่งสินค้า</label>
+            <textarea id="cusAddress" rows="3" required placeholder="กรุณากรอกที่อยู่ระบุตำบล อำเภอ จังหวัดให้ชัดเจน..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="payment">ช่องทางการชำระเงิน</label>
+            <select id="payment" required>
+                <option value="โอนเงินผ่านธนาคาร (QR Code)">โอนเงินผ่านธนาคาร (QR Code)</option>
+                <option value="บัตรเครดิต/เดบิต">บัตรเครดิต/เดบิต</option>
+                <option value="เก็บเงินปลายทาง (COD)">เก็บเงินปลายทาง (COD)</option>
+            </select>
+        </div>
+
+        <div class="btn-container">
+            <button type="submit">Confirm Purchase 💖</button>
+        </div>
+    </form>
+
+    <a href="index.html" class="back-link">กลับสู่หน้าหลัก</a>
+</div>
+
+<script>
+// ดึงข้อมูลสินค้าที่บันทึกมาแสดงผล
+const savedName = localStorage.getItem("productName") || "ไม่มีรายการสินค้าค้างอยู่";
+const savedPrice = localStorage.getItem("productPrice") || "0.00";
+
+document.getElementById("productName").innerText = savedName;
+document.getElementById("productPrice").innerText = "ยอดสุทธิ: $" + savedPrice;
+
+function confirmOrder(event){
+    event.preventDefault(); 
+    
+    const name = document.getElementById("cusName").value;
+    alert("การสั่งซื้อสำเร็จเรียบร้อยแล้วค่ะคุณ " + name + " 💖\nระบบกำลังดำเนินการจัดส่งสินค้า ขอบคุณที่ใช้บริการ Dolly Perfume ค่ะ");
+    
+    // ล้างค่าตะกร้าสินค้าหลังจากกดซื้อแล้ว
+    localStorage.removeItem("productName");
+    localStorage.removeItem("productPrice");
+    
+    // วิ่งกลับหน้าหลักตัวจริง
+    window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

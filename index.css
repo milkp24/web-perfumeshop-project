@@ -1,0 +1,23 @@
+img {
+    width: 8000px;   /* ปรับตัวเลขตามใจ */
+    height: auto;   /* รักษาสัดส่วนรูป */
+}
+body {
+    margin: 0;
+    font-family: 'Prompt', sans-serif;
+    background-color: #f9e7e4; /* สีเดียวกับด้านบน */
+    
+}
+/* ================= FADE IN EFFECT ================= */
+.fade-in {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+

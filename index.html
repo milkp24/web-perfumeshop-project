@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dolly Perfume - Luxury Fragrance</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Prompt', sans-serif;
+    background-color: #f9e7e4;
+    color: #111;
+}
+
+/* ================= HEADER ================= */
+header {
+    padding: 25px 100px;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 60px;
+}
+
+nav a {
+    margin-left: 45px;
+    text-decoration: none;
+    color: #111;
+    font-weight: 400;
+    letter-spacing: 2px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    opacity: 0.6;
+    border-bottom: 1px solid #111;
+}
+
+/* ================= HERO ================= */
+.hero {
+    height: 90vh;
+    background-image: url("pic/cover.png");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding-left: 140px;
+    position: relative;
+    color: white;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+}
+
+.hero-content {
+    position: relative;
+    max-width: 550px;
+}
+
+.hero h1 {
+    font-size: 70px;
+    font-weight: 300;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+}
+
+.hero p {
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 35px;
+}
+
+.hero a {
+    padding: 14px 45px;
+    border: 1px solid white;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: 0.4s;
+}
+
+.hero a:hover {
+    background: white;
+    color: black;
+}
+
+/* ================= COLLECTION ================= */
+.collection {
+    padding: 180px 120px;
+    text-align: center;
+    background: #fff;
+}
+
+/* ULTRA LUXURY BUTTON */
+.collection-btn {
+    display: inline-block;
+    padding: 30px 130px;
+    background: transparent;
+    color: #111;
+    text-decoration: none;
+    border: 2px solid #111;
+    border-radius: 100px;
+    font-size: 28px;
+    letter-spacing: 8px;
+    font-weight: 300;
+    position: relative;
+    transition: all 0.6s ease;
+    overflow: hidden;
+    margin-bottom: 120px;
+}
+
+.collection-btn::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border-radius: 100px;
+    border: 1px solid #111;
+    opacity: 0.3;
+}
+
+.collection-btn:hover {
+    background: #111;
+    color: white;
+    transform: translateY(-10px);
+    box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+}
+
+.collection-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 90px;
+}
+
+.collection-item {
+    overflow: hidden;
+}
+
+.collection-item img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    transition: 0.6s;
+}
+
+.collection-item img:hover {
+    transform: scale(1.03);
+}
+
+.collection-item h3 {
+    margin-top: 30px;
+    letter-spacing: 3px;
+    font-weight: 400;
+}
+
+/* ================= BESTSELLER ================= */
+.bestseller {
+    padding: 160px 120px;
+    text-align: center;
+}
+
+.bestseller h2 {
+    letter-spacing: 6px;
+    font-weight: 300;
+    margin-bottom: 90px;
+}
+
+.bestseller-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+}
+
+.bestseller-item img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    transition: 0.4s;
+}
+
+.bestseller-item img:hover {
+    transform: scale(1.06);
+}
+
+.bestseller-item h3 {
+    margin: 25px 0 15px;
+    letter-spacing: 3px;
+    font-weight: 400;
+}
+
+.bestseller-item button {
+    padding: 10px 30px;
+    border: 1px solid #111;
+    background: transparent;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: 0.4s;
+    font-family: 'Prompt', sans-serif;
+}
+
+.bestseller-item button:hover {
+    background: #111;
+    color: white;
+}
+
+/* ================= REVIEWS (NEW SECTON) ================= */
+.reviews {
+    padding: 140px 120px;
+    text-align: center;
+    background: #fff;
+}
+
+.reviews h2 {
+    letter-spacing: 6px;
+    font-weight: 300;
+    margin-bottom: 70px;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.review-card {
+    padding: 40px 30px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+}
+
+.review-card p {
+    font-style: italic;
+    color: #555;
+    line-height: 1.8;
+}
+
+.review-card h4 {
+    margin-top: 20px;
+    letter-spacing: 1px;
+    color: #111;
+}
+
+/* ================= SALE ================= */
+.sale {
+    background-color: #f3d6db;
+    padding: 160px 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px;
+}
+
+.sale-text h2 {
+    font-size: 34px;
+    font-weight: 300;
+    letter-spacing: 3px;
+}
+
+.sale-text p {
+    margin: 25px 0;
+}
+
+.sale-text a {
+    padding: 14px 35px;
+    border: 1px solid #111;
+    text-decoration: none;
+    color: #111;
+    letter-spacing: 2px;
+    transition: 0.4s;
+}
+
+.sale-text a:hover {
+    background: #111;
+    color: white;
+}
+
+.sale img {
+    width: 480px;
+    height: 420px;
+    object-fit: cover;
+}
+
+/* ================= FOOTER ================= */
+footer {
+    background: #111;
+    color: white;
+    padding: 90px 120px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+footer h4 {
+    margin-bottom: 25px;
+    letter-spacing: 3px;
+    font-weight: 300;
+}
+
+footer p, footer a {
+    font-size: 14px;
+    color: #ccc;
+    text-decoration: none;
+    line-height: 1.8;
+}
+
+footer a:hover {
+    color: white;
+}
+
+/* ================= FADE IN ANIMATION ================= */
+.fade-in {
+    opacity: 0;
+    transform: translateY(80px);
+    transition: all 1.2s ease;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+    .collection-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bestseller-grid, .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sale {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .sale img {
+        width: 100%;
+        height: auto;
+    }
+
+    header {
+        padding: 20px 40px;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav a {
+        margin: 0 15px;
+    }
+
+    .hero {
+        padding-left: 40px;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="fade-in">
+    <div class="logo">
+        <img src="pic/logo-removebg-preview.png" alt="Dolly Perfume">
+    </div>
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="regist1.html">REGISTER</a>
+    </nav>
+</header>
+
+<section class="hero fade-in">
+    <div class="hero-content">
+        <h1>DOLLY</h1>
+        <p>Luxury fragrance crafted for timeless elegance</p>
+        <a href="regist1.html">DISCOVER</a>
+    </div>
+</section>
+
+<section class="collection fade-in">
+    <a href="OURCOLLECTION.html" class="collection-btn">
+        OUR COLLECTION
+    </a>
+
+    <div class="collection-grid">
+        <div class="collection-item">
+            <img src="pic/p1.png" alt="Dolly Classic">
+            <h3>DOLLY CLASSIC</h3>
+        </div>
+        <div class="collection-item">
+            <img src="pic/p2.png" alt="Dolly Pink">
+            <h3>DOLLY PINK</h3>
+        </div>
+        <div class="collection-item">
+            <img src="pic/p3.png" alt="Dolly Gold">
+            <h3>DOLLY GOLD</h3>
+        </div>
+        <div class="collection-item">
+            <img src="pic/p4.png" alt="Dolly Bloom">
+            <h3>DOLLY BLOOM</h3>
+        </div>
+    </div>
+</section>
+
+<section class="bestseller fade-in">
+    <h2>OUR BESTSELLERS</h2>
+    <div class="bestseller-grid">
+        <div class="bestseller-item">
+            <img src="pic/p1.png" alt="Rose Essence">
+            <h3>ROSE ESSENCE</h3>
+            <button onclick="addToCart('ROSE ESSENCE')">Add to Cart</button>
+        </div>
+        <div class="bestseller-item">
+            <img src="pic/p2.png" alt="Velvet Touch">
+            <h3>VELVET TOUCH</h3>
+            <button onclick="addToCart('VELVET TOUCH')">Add to Cart</button>
+        </div>
+        <div class="bestseller-item">
+            <img src="pic/p3.png" alt="Gold Elixir">
+            <h3>GOLD ELIXIR</h3>
+            <button onclick="addToCart('GOLD ELIXIR')">Add to Cart</button>
+        </div>
+        <div class="bestseller-item">
+            <img src="pic/p4.png" alt="Bloom Secret">
+            <h3>BLOOM SECRET</h3>
+            <button onclick="addToCart('BLOOM SECRET')">Add to Cart</button>
+        </div>
+    </div>
+</section>
+
+<section class="reviews fade-in">
+    <h2>WHAT OUR CUSTOMERS SAY</h2>
+    <div class="reviews-grid">
+        <div class="review-card">
+            <p>"กลิ่น Dolly Pink หอมหวานละมุนและน่ารักมากค่ะ ฉีดไปเรียนเพื่อนทักตลอดเลยว่าตัวหอม แถมติดทนนานทั้งวันด้วย แนะนำเลยค่ะ!"</p>
+            <h4>- คุณแพรวา K.</h4>
+        </div>
+        <div class="review-card">
+            <p>"ลองสั่ง Gold Elixir มาใช้ครั้งแรก กลิ่นหอมหรูหราดูแพงมาก เหมาะกับฉีดออกงานหรือไปดินเนอร์ตอนกลางคืน แพ็กเกจจิ้งชนะเลิศ"</p>
+            <h4>- คุณธนภัทร ส.</h4>
+        </div>
+        <div class="review-card">
+            <p>"เป็นน้ำหอมที่ฉีดแล้วรู้สึกมั่นใจขึ้นมาก กลิ่น Rose Essence มีความสดชื่น ผสมผสานความเซ็กซี่เล็กๆ ขวดต่อไปมาแน่นอนครับ"</p>
+            <h4>- คุณมินตรา ป.</h4>
+        </div>
+    </div>
+</section>
+
+<section class="sale fade-in">
+    <div class="sale-text">
+        <h2>Spring Sale<br>Up to 40% OFF</h2>
+        <p>Discover exclusive fragrances crafted for modern elegance.</p>
+        <a href="regist1.html">Shop Now</a>
+    </div>
+    <img src="pic/p2.png" alt="Sale Item">
+</section>
+
+<footer class="fade-in">
+    <div>
+        <h4>DOLLY PERFUME</h4>
+        <p>Luxury fragrance crafted for timeless elegance.</p>
+    </div>
+    <div>
+        <h4>Quick Links</h4>
+        <p><a href="index.html">Home</a></p>
+        <p><a href="about.html">About</a></p>
+        <p><a href="regist1.html">Register</a></p>
+    </div>
+    <div>
+        <h4>Contact</h4>
+        <p>Email: dolly@email.com</p>
+        <p>Tel: 099-999-9999</p>
+    </div>
+</footer>
+
+<script>
+// ระบบแอนิเมชัน Fade-in เมื่อเลื่อนหน้าจอ
+const faders = document.querySelectorAll('.fade-in');
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('show');
+        }
+    });
+}, { threshold: 0.1 });
+
+faders.forEach(el => observer.observe(el));
+
+// ระบบแจ้งเตือนเพิ่มสินค้าลงตะกร้าจำลอง (JavaScript Function)
+function addToCart(productName) {
+    alert('🛒 เพิ่มน้ำหอมกลิ่น "' + productName + '" ลงในตะกร้าสินค้าของคุณเรียบร้อยแล้ว!');
+}
+</script>
+
+</body>
+</html>
